@@ -1,0 +1,33 @@
+
+
+body {
+	font-family: sans-serif;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80vh;
+}
+
+form {
+	display: flex;
+	flex-flow: column;
+	border: 1.5px solid #bbb;
+	padding: 10px 20px;
+	border-radius: 11px;
+	background-color: #fff;
+}
+
+input {
+	margin-left: 15px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: 1px solid #bbb;
+}
+
+p {
+	display: flex;
+	justify-content: space-between;
+}
+
+
