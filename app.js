@@ -2,14 +2,19 @@ var hex_input = document.querySelector('[name=hex]');
 var dec_input = document.querySelector('[name=dec]');
 var bin_input = document.querySelector('[name=bin]');
 
-var columnize = function (n, col) {
-	if (!isNaN(n)) n = n.toString();
+var columnize = function (num, col) {
+	var before = num.toString().split('').reverse();
+	var after = [];
 
-	var re = new RegExp('^(\\d{' + n.length % col + '})(\\d{' + col + '})', 'g');
-	n = n.replace(re, '$1 $2');
-	n = n.replace(new RegExp('(\\d{' + col + '})+?', 'gi'), '$1 ');
-	
-	return n.trim();
+	before.forEach(function (d, i) {
+		after.push(d);
+
+		if ((i+1) % col == 0) {
+			after.push(' ');
+		}
+	} );
+
+	return after.reverse().join('').trim();
 };
 
 var update = function (dec) {
@@ -34,4 +39,3 @@ dec_input.oninput = function () {
 bin_input.oninput = function () {
 	update(parseInt(this.value, 2));
 };
-
