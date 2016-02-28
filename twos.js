@@ -68,9 +68,12 @@ var dec2bin = function (dec) {
 	var bin = [];
 	dec = parseInt(dec);
 
+	if (dec == 0) {
+		return 0;
+	}
+
 	// find biggest significant figure
 	var pow = Math.floor(Math.log(dec)/Math.log(2));
-	console.log('pow: ' + pow + ', num: ' + Math.pow(2, pow));
 
 	while (pow >= 0) {
 		if (dec - Math.pow(2, pow) >= 0) {
@@ -89,7 +92,7 @@ var dec2bin = function (dec) {
 
 input_bin_a.oninput = function () {
 	var bin_a = this.value.replace(/\s/g, '');
-	var bin_b = twoscomp(bin_one);
+	var bin_b = twoscomp(bin_a);
 
 	input_bin_a.value = columnize(bin_a, 4);
 	input_bin_b.value = columnize(bin_b, 4);
@@ -106,5 +109,5 @@ input_dec_a.oninput = function () {
 	input_bin_a.value = columnize(bin_a, 4);
 	input_bin_b.value = columnize(twoscomp(bin_a), 4);
 
-	input_dec_b.value = -dec_a;
+	input_dec_b.value = dec_a * -1;
 };
