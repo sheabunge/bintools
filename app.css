@@ -1,9 +1,9 @@
 
-
 body {
 	font-family: sans-serif;
 	background-color: #f5f5f5;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 80vh;
@@ -12,7 +12,7 @@ body {
 form {
 	display: flex;
 	flex-flow: column;
-	border: 1.5px solid #bbb;
+	border: 2px solid #bbb;
 	padding: 10px 20px;
 	border-radius: 11px;
 	background-color: #fff;
@@ -25,9 +25,31 @@ input {
 	border: 1px solid #bbb;
 }
 
-p {
-	display: flex;
-	justify-content: space-between;
+input:disabled {
+	background: #f5f5f5;
 }
 
+p {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
 
+p label:first-of-type {
+	margin-right: auto;
+}
+
+.decimal-input {
+	width: 30px;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: #0074D9;
+}
+
+a:hover {
+	color: #001f3f;
+	border-bottom: 1px solid #001f3f;
+}

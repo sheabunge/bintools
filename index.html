@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Hexidecimal Converter</title>
-	<link rel="stylesheet" href="app.css">
+    <meta charset="utf-8">
+    <title>Binary Converters</title>
+    <link rel="stylesheet" href="app.css">
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: block;
+            margin-bottom: .5em;
+        }
+
+        .footer {
+            padding-top: 50px;
+        }
+
+    </style>
 </head>
 <body>
 
-	<form>
-		<p>
-			<label>Decimal</label>
-			<input name="dec">
-		</p>
-		<p>
-			<label>Hex</label>
-			<input name="hex">
-		</p>
-		<p>
-			<label>Binary</label>
-			<input name="bin">
-		</p>
-	</form>
+    <p>Simple web-based tools for binary number conversion.</p>
 
+    <nav>
+        <ul>
+            <li><a href="hexconv.html">Decimal to hexidecimal to binary converter</a></li>
+            <li><a href="twos.html">Binary two's complement calculator</a></li>
+        </ul>
+    </nav>
 
-	<script src="app.js"></script>
+   <p class="footer">
+       <a href="https://github.com/sheabunge/binconv">View source on GitHub</a>
+   </p>
 
 </body>
 </html>
