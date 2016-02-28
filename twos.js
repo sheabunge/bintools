@@ -1,20 +1,11 @@
-var input_bin_one = document.querySelector('[name=bin_one]');
-var input_bin_two = document.querySelector('[name=bin_two]');
-var input_dec_one = document.querySelector('[name=dec_one]');
-var input_dec_two = document.querySelector('[name=dec_two]');
+var input_bin_a = document.querySelector('[name=bin_one]');
+var input_bin_b = document.querySelector('[name=bin_two]');
+var input_dec_a = document.querySelector('[name=dec_one]');
+var input_dec_b = document.querySelector('[name=dec_two]');
 
 var columnize = function (num, col) {
 	num = num.toString();
-	var before;
-
-	if (num.indexOf('.') !== -1) {
-		before = num.split('.');
-		var fractional = before[1].split('');
-
-	} else {
-		before = num.split('').reverse();
-	}
-
+	var before = num.split('').reverse();
 	var after = [];
 
 	for (var i = 0; i < before.length; i++) {
@@ -73,13 +64,47 @@ var bin2dec = function (bin) {
 	return dec;
 };
 
-input_bin_one.oninput = function () {
-	var bin_one = this.value.replace(/\s/g, '');
-	var bin_two = twoscomp(bin_one);
+var dec2bin = function (dec) {
+	var bin = [];
+	dec = parseInt(dec);
 
-	input_bin_one.value = columnize(bin_one, 4);
-	input_bin_two.value = columnize(bin_two, 4);
+	// find biggest significant figure
+	var pow = Math.floor(Math.log(dec)/Math.log(2));
+	console.log('pow: ' + pow + ', num: ' + Math.pow(2, pow));
 
-	input_dec_one.value = bin2dec(bin_one);
-	input_dec_two.value = bin2dec(bin_one) * -1;
+	while (pow >= 0) {
+		if (dec - Math.pow(2, pow) >= 0) {
+			dec -= Math.pow(2, pow);
+			bin[pow] = '1';
+		} else {
+			bin[pow] = '0';
+		}
+
+		--pow;
+	}
+
+	return bin.reverse().join('');
+};
+
+
+input_bin_a.oninput = function () {
+	var bin_a = this.value.replace(/\s/g, '');
+	var bin_b = twoscomp(bin_one);
+
+	input_bin_a.value = columnize(bin_a, 4);
+	input_bin_b.value = columnize(bin_b, 4);
+
+	input_dec_a.value = bin2dec(bin_a);
+	input_dec_b.value = bin2dec(bin_a) * -1;
+};
+
+
+input_dec_a.oninput = function () {
+	var dec_a = parseInt(this.value);
+	var bin_a = dec2bin(dec_a);
+
+	input_bin_a.value = columnize(bin_a, 4);
+	input_bin_b.value = columnize(twoscomp(bin_a), 4);
+
+	input_dec_b.value = -dec_a;
 };
