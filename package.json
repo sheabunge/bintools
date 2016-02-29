@@ -1,0 +1,22 @@
+{
+  "name": "binconv",
+  "description": "",
+  "homepage": "http://sheabunge.github.io/binconv",
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "cssnano": "^3.5.2",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.12.0",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-postcss": "^0.7.1",
+    "load-grunt-tasks": "^3.4.0",
+    "precss": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sheabunge/binconv.git"
+  },
+  "author": "Shea Bunge <shea@bungeshea.com>",
+  "license": "MIT"
+}
