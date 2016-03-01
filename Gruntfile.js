@@ -39,7 +39,10 @@ module.exports = function(grunt) {
 		},
 
 		uglify: {
-			vendor: {
+			dist: {
+				options: {
+					sourceMap: true
+				},
 				files: {
 					'dist/twos.js': [
 						'js/lib/format.js',
