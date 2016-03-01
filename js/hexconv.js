@@ -10,14 +10,14 @@ var update = function (dec) {
 
 update('0');
 
-hex_input.oninput = function () {
+hex_input.onInput = function () {
 	update(hex2dec(this.value));
 };
 
-dec_input.oninput = function () {
+dec_input.onInput = function () {
 	update(this.value.replace(/\D/g, ''));
 };
 
-bin_input.oninput = function () {
+bin_input.onInput = function () {
 	update(bin2dec(this.value));
 };

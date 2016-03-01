@@ -1,4 +1,10 @@
 
+/**
+ * Separate a number into columns using spaces
+ * @param {string} num The original number
+ * @param {number} col The amount of digits per column
+ * @returns {string} The formatted number
+ */
 var columnize = function (num, col) {
 	num = num + '';
 	var before = num.split('').reverse();
@@ -15,7 +21,13 @@ var columnize = function (num, col) {
 	return after.reverse().join('').trim();
 };
 
-
+/**
+ * Format a decimal number for display.
+ * Adds column separators and removes leading zeros.
+ *
+ * @param {string} dec The unformatted decimal number
+ * @returns {string} The formatted number
+ */
 var format_dec = function (dec) {
 	// convert to string
 	dec += '';
@@ -26,7 +38,7 @@ var format_dec = function (dec) {
 	// remove leading zeros
 	dec = dec.replace(/^0+([1-9])/, '$1');
 
-	// seperate into columns
+	// separate into columns
 	var padding = 3 - dec.length % 3;
 	if (padding == 3) padding = 0;
 	dec = ' '.repeat(padding) + dec;
@@ -36,10 +48,10 @@ var format_dec = function (dec) {
 };
 
 /**
- * Formats a binary string by padding out with extra 0s
- * and adding columns
- * @param  {string} bin The binary string to format
- * @return {string}     The formatted binary string
+ * Format a binary number by padding it out with zeros and adding column separators
+ * @param {string} bin The unformatted binary number
+ * @param {number} [bits] Force number to occupy a set number of bits
+ * @returns {string} The formatted binary number
  */
 var format_bin = function (bin, bits) {
 	bin += '';

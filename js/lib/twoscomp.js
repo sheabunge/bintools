@@ -1,6 +1,10 @@
-
-var twoscomp = function (orig) {
-	orig = orig.split('').reverse();
+/**
+ * Find the two's complement of a binary number
+ * @param {string} bin The original decimal number
+ * @returns {string} The two's complement
+ */
+var twoscomp = function (bin) {
+	var orig = bin.split('').reverse();
 	var comp = [];
 	var bits = orig.length;
 
