@@ -4,14 +4,14 @@ var bin_input = document.querySelector('[name=bin]');
 
 var update = function (dec) {
 	dec_input.value = format_dec(dec);
-	hex_input.value = (dec * 1).toString(16);
+	hex_input.value = dec2hex(dec);
 	bin_input.value = format_bin(dec2bin(dec));
 };
 
 update('0');
 
 hex_input.oninput = function () {
-	update(parseInt(this.value, 16));
+	update(hex2dec(this.value));
 };
 
 dec_input.oninput = function () {

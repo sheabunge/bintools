@@ -38,3 +38,39 @@ var dec2bin = function (dec) {
 
 	return bin.reverse().join('');
 };
+
+var dec2hex = function (dec) {
+	var alpha = '0123456789ABCDEF';
+	var hex = [];
+	dec *= 1;
+
+	if (dec === 0) {
+		return 0;
+	}
+
+	// find biggest significant figure
+	var pow = Math.floor(Math.log(dec)/Math.log(16));
+
+	while (pow >= 0) {
+		hex[pow] = Math.floor(dec / Math.pow(16, pow));
+		hex[pow] = alpha.charAt(hex[pow]);
+		dec %= Math.pow(16, pow);
+		--pow;
+	}
+
+	return hex.reverse().join('');
+};
+
+var hex2dec = function (hex) {
+	var alpha = '0123456789ABCDEF';
+	var dec = 0;
+	hex = hex.toUpperCase();
+	hex = hex.split('').reverse();
+
+	for (var i = hex.length - 1; i >= 0; --i) {
+		var digit = alpha.indexOf(hex[i]);
+		dec += Math.pow(16, i) * digit;
+	}
+
+	return dec;
+};

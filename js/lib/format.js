@@ -29,7 +29,6 @@ var format_dec = function (dec) {
 	// seperate into columns
 	var padding = 3 - dec.length % 3;
 	if (padding == 3) padding = 0;
-	console.log(padding);
 	dec = ' '.repeat(padding) + dec;
 	dec = dec.replace(/(.{3})/g, '$1 ').trim();
 
