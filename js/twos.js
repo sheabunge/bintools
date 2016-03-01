@@ -9,7 +9,7 @@ orig_bin.oninput = function () {
 	var comp = twoscomp(binary);
 
 	orig_bin.value = binary;
-	comp_bin.value = format_bin(comp, comp.length);
+	comp_bin.value = comp;
 
 	orig_dec.value = decimal;
 	comp_dec.value = decimal * -1;
@@ -21,7 +21,7 @@ orig_dec.oninput = function () {
 	var comp = twoscomp(binary);
 
 	orig_bin.value = binary;
-	comp_bin.value = format_bin(comp, comp.length);
+	comp_bin.value = comp;
 
 	comp_dec.value = decimal * -1;
 };
