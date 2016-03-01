@@ -10,14 +10,19 @@ var update = function (dec) {
 
 update('0');
 
-hex_input.onInput = function () {
-	update(hex2dec(this.value));
+hex_input.oninput = function () {
+	var hex = this.value.replace(/[^0-9a-fA-F]/g, '');
+	var dec = hex2dec(hex);
+	update(dec);
 };
 
-dec_input.onInput = function () {
-	update(this.value.replace(/\D/g, ''));
+dec_input.oninput = function () {
+	var dec = this.value.replace(/[^\d.]/g, '');
+	update(dec);
 };
 
-bin_input.onInput = function () {
-	update(bin2dec(this.value));
+bin_input.oninput = function () {
+	var bin = this.value.replace(/[^01.]/, '');
+	var dec = bin2dec(bin);
+	update(dec);
 };
