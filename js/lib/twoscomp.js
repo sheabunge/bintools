@@ -15,6 +15,10 @@ var twoscomp = function (bin) {
 		++i;
 	}
 
+	if (bits < i) {
+		return comp.reverse().join('');
+	}
+
 	comp[i] = '1';
 	++i;
 
