@@ -1,26 +1,27 @@
-var input_bin_a = document.querySelector('[name=bin_one]');
-var input_bin_b = document.querySelector('[name=bin_two]');
-var input_dec_a = document.querySelector('[name=dec_one]');
-var input_dec_b = document.querySelector('[name=dec_two]');
+var orig_bin = document.querySelector('[name=orig_binary]');
+var orig_dec = document.querySelector('[name=orig_decimal]');
+var comp_bin = document.querySelector('[name=comp_binary]');
+var comp_dec = document.querySelector('[name=comp_decimal]');
 
-input_bin_a.oninput = function () {
-	var bin_a = this.value.replace(/\s/g, '');
-	var bin_b = twoscomp(bin_a);
+orig_bin.oninput = function () {
+	var binary = format_bin(this.value);
+	var decimal = bin2dec(binary);
+	var comp = twoscomp(binary);
 
-	input_bin_a.value = columnize(bin_a, 4);
-	input_bin_b.value = columnize(bin_b, 4);
+	orig_bin.value = binary;
+	comp_bin.value = format_bin(comp, comp.length);
 
-	input_dec_a.value = bin2dec(bin_a);
-	input_dec_b.value = bin2dec(bin_a) * -1;
+	orig_dec.value = decimal;
+	comp_dec.value = decimal * -1;
 };
 
+orig_dec.oninput = function () {
+	var decimal = this.value * 1;
+	var binary = format_bin(dec2bin(decimal));
+	var comp = twoscomp(binary);
 
-input_dec_a.oninput = function () {
-	var dec_a = parseInt(this.value);
-	var bin_a = dec2bin(dec_a);
+	orig_bin.value = binary;
+	comp_bin.value = format_bin(comp, comp.length);
 
-	input_bin_a.value = columnize(bin_a, 4);
-	input_bin_b.value = columnize(twoscomp(bin_a), 4);
-
-	input_dec_b.value = dec_a * -1;
+	comp_dec.value = decimal * -1;
 };
