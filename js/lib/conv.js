@@ -16,7 +16,7 @@ var bin2dec = function (bin) {
 
 var dec2bin = function (dec) {
 	var bin = [];
-	dec = parseInt(dec);
+	dec *= 1;
 
 	if (dec === 0) {
 		return 0;
