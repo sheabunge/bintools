@@ -1,7 +1,7 @@
 {
-  "name": "binconv",
-  "description": "",
-  "homepage": "http://sheabunge.github.io/binconv",
+  "name": "convtools",
+  "description": "Simple web-based conversion tools",
+  "homepage": "http://sheabunge.github.io/convtools",
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "cssnano": "^3.5.2",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sheabunge/binconv.git"
+    "url": "https://github.com/sheabunge/convtools.git"
   },
   "author": "Shea Bunge <shea@bungeshea.com>",
   "license": "MIT"
