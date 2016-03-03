@@ -15,7 +15,7 @@ var twoscomp = function (bin) {
 		++i;
 	}
 
-	if (bits < i) {
+	if (i >= bits) {
 		return comp.reverse().join('');
 	}
 
