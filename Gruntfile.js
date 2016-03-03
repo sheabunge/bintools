@@ -57,8 +57,25 @@ module.exports = function(grunt) {
 					]
 				}
 			}
+		},
+
+		clean: {
+			options: {
+				force: true
+			},
+			dist: ['dist/']
+		},
+
+		copy: {
+			bootstrap: {
+				expand: true,
+				flatten: true,
+				cwd: 'bower_components/bootstrap/dist',
+				src: '**/*.min.*',
+				dest: 'dist'
+			}
 		}
 	});
 
-	grunt.registerTask('default', ['postcss', 'jshint', 'uglify']);
+	grunt.registerTask('default', ['clean', 'postcss', 'jshint', 'uglify', 'copy']);
 };

@@ -1,0 +1,22 @@
+{
+  "name": "convtools",
+  "description": "Simple web-based conversion tools",
+  "main": "index.html",
+  "authors": [
+    "Shea Bunge <shea@bungeshea.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sheabunge/convtools",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4-dev"
+  }
+}
