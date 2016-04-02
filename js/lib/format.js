@@ -71,26 +71,3 @@ var format_bin = function (bin, bits) {
 
 	return bin + mantissa;
 };
-
-
-/**
- * Separate a number into columns using spaces
- * @param {string} num The original number
- * @param {number} col The amount of digits per column
- * @returns {string} The formatted number
- */
-var columnize = function (num, col) {
-	num = num + '';
-	var before = num.split('').reverse();
-	var after = [];
-
-	for (var i = 0; i < before.length; i++) {
-		after.push(before[i]);
-
-		if ((i+1) % col === 0) {
-			after.push(' ');
-		}
-	}
-
-	return after.reverse().join('').trim();
-};
