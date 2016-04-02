@@ -85,7 +85,7 @@ var dec2bin = function (dec) {
 var dec2hex = function (dec) {
 	var alpha = '0123456789ABCDEF';
 	var hex = [];
-	dec *= 1;
+	dec = Math.floor(dec);
 
 	if (dec === 0) {
 		return '0';
