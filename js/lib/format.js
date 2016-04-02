@@ -7,6 +7,8 @@
  * @returns {string} The formatted number
  */
 var format_dec = function (dec) {
+	var mantissa = '';
+
 	// convert to string
 	dec += '';
 
@@ -16,11 +18,20 @@ var format_dec = function (dec) {
 	// remove leading zeros
 	dec = dec.replace(/^0+([1-9])/, '$1');
 
+	// remove mantissa
+	if (dec.indexOf('.') !== -1) {
+		var parts = dec.split('.');
+		mantissa += '.' + parts[1];
+		dec = parts[0];
+	}
+
 	// add columns
 	var padding = 3 - dec.length % 3;
 	if (padding == 3) padding = 0;
 	dec = ' '.repeat(padding) + dec;
-	return dec.replace(/(\d{3}[^.])/g, '$1 ').trim();
+	dec = dec.replace(/(.{3})/g, '$1 ').trim();
+
+	return dec + mantissa;
 };
 
 /**
@@ -30,6 +41,7 @@ var format_dec = function (dec) {
  * @returns {string} The formatted binary number
  */
 var format_bin = function (bin, bits) {
+	var mantissa = '';
 	bin += '';
 
 	// remove columns
@@ -37,6 +49,13 @@ var format_bin = function (bin, bits) {
 
 	// remove leading zeros
 	bin = bin.replace(/^0+([^0])/, '$1');
+
+	// remove mantissa
+	if (bin.indexOf('.') !== -1) {
+		var parts = bin.split('.');
+		mantissa = '.' + parts[1];
+		bin = parts[0];
+	}
 
 	var padding = 0;
 
@@ -48,7 +67,9 @@ var format_bin = function (bin, bits) {
 	}
 
 	bin = '0'.repeat(padding) + bin;
-	return bin.replace(/(\d{4})/g, '$1 ').trim();
+	bin = bin.replace(/(.{4})/g, '$1 ').trim();
+
+	return bin + mantissa;
 };
 
 
