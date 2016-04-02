@@ -15,15 +15,15 @@ var format_dec = function (dec) {
 	// remove columns
 	dec = dec.replace(/\s/g, '');
 
-	// remove leading zeros
-	dec = dec.replace(/^0+([1-9])/, '$1');
-
 	// remove mantissa
 	if (dec.indexOf('.') !== -1) {
 		var parts = dec.split('.');
 		mantissa += '.' + parts[1];
 		dec = parts[0];
 	}
+
+	// remove leading zeros
+	dec = dec.replace(/^0+([1-9])/, '$1');
 
 	// add columns
 	var padding = 3 - dec.length % 3;
@@ -47,15 +47,16 @@ var format_bin = function (bin, bits) {
 	// remove columns
 	bin = bin.replace(/\s/g, '');
 
-	// remove leading zeros
-	bin = bin.replace(/^0+([^0])/, '$1');
-
 	// remove mantissa
 	if (bin.indexOf('.') !== -1) {
 		var parts = bin.split('.');
+		console.log(parts);
 		mantissa = '.' + parts[1];
 		bin = parts[0];
 	}
+
+	// remove leading zeros
+	bin = bin.replace(/^0+([^0])/, '$1');
 
 	var padding = 0;
 
