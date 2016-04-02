@@ -1,7 +1,7 @@
-var orig_bin = document.querySelector('[name=orig_binary]');
-var orig_dec = document.querySelector('[name=orig_decimal]');
-var comp_bin = document.querySelector('[name=comp_binary]');
-var comp_dec = document.querySelector('[name=comp_decimal]');
+var orig_bin = document.getElementById('orig_binary');
+var orig_dec = document.getElementById('orig_decimal');
+var comp_bin = document.getElementById('comp_binary');
+var comp_dec = document.getElementById('comp_decimal');
 
 orig_bin.oninput = function () {
 	var binary = format_bin(this.value);

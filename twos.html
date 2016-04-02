@@ -4,6 +4,14 @@
 	<meta charset="utf-8">
 	<title>Two's Complement Converter</title>
 	<link rel="stylesheet" href="dist/app.css">
+	<style>
+
+		input[id$='_decimal'] {
+			width: 30px;
+			text-align: center;
+		}
+
+	</style>
 </head>
 <body>
 
@@ -12,18 +20,17 @@
 	<form>
 		<p>
 			<label for="orig_binary">Original</label>
-			<input name="orig_binary" id="orig_binary" class="binary-input">
-			<input name="orig_decimal" value="0" class="decimal-input">
+			<input id="orig_binary" title="Original binary">
+			<input id="orig_decimal" value="0" title="Original decimal">
 		</p>
 		<p>
 			<label for="comp_binary">Complement</label>
-			<input name="comp_binary" id="comp_binary" class="binary-input">
-			<input name="comp_decimal" value="0" class="decimal-input">
+			<input id="comp_binary" title="Complement binary">
+			<input id="comp_decimal" value="0" title="Complement decimal">
 		</p>
 	</form>
 
 	<p><a href="https://github.com/sheabunge/binconv">View source on GitHub</a></p>
-
 
 	<script src="dist/twos.js"></script>
 </body>

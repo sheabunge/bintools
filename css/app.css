@@ -39,11 +39,6 @@ p label:first-of-type {
 	margin-right: auto;
 }
 
-.decimal-input {
-	width: 30px;
-	text-align: center;
-}
-
 a {
 	text-decoration: none;
 	color: #0074D9;

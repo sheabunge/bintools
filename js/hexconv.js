@@ -1,6 +1,6 @@
-var hex_input = document.querySelector('[name=hex]');
-var dec_input = document.querySelector('[name=dec]');
-var bin_input = document.querySelector('[name=bin]');
+var hex_input = document.getElementById('hex');
+var dec_input = document.getElementById('dec');
+var bin_input = document.getElementById('bin');
 
 var update = function (dec) {
 	dec_input.value = format_dec(dec);
