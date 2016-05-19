@@ -91,6 +91,20 @@ var dec2hex = function (dec) {
 		return '0';
 	}
 
+	// Convert the fractional part first
+	if (Math.floor(dec) !== dec) {
+		var hex_mant = '.';
+		var mant = dec % 1;
+
+		for (var j = 0; mant !== 0; ++j) {
+			mant *= 16;
+			hex_mant += Math.floor(mant);
+			mant %= 1;
+		}
+
+		return dec2bin(Math.floor(dec)) + hex_mant;
+	}
+
 	// find biggest significant figure
 	var pow = Math.floor(Math.log(dec)/Math.log(16));
 
@@ -112,11 +126,25 @@ var dec2hex = function (dec) {
 var hex2dec = function (hex) {
 	var alpha = '0123456789ABCDEF';
 	var dec = 0;
+	var digit;
 	hex = hex.toUpperCase();
+
+	// Convert the fractional part first
+	if (hex.indexOf('.') !== -1) {
+		var parts = hex.split('.');
+		var mant = parts[1];
+		hex = parts[0];
+
+		for (var j = 0; j < mant.length; ++j) {
+			digit = alpha.indexOf(mant[j]);
+			dec += 1/Math.pow(16, j+1) * digit;
+		}
+	}
+
 	hex = hex.split('').reverse().join('');
 
 	for (var i = hex.length - 1; i >= 0; --i) {
-		var digit = alpha.indexOf(hex[i]);
+		digit = alpha.indexOf(hex[i]);
 		dec += Math.pow(16, i) * digit;
 	}
 

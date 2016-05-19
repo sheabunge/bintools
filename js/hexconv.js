@@ -11,7 +11,8 @@ var update = function (dec) {
 update('0');
 
 hex_input.oninput = function () {
-	var hex = this.value.replace(/[^0-9a-fA-F]/g, '');
+	var hex = this.value.replace(/[^0-9a-fA-F.]/g, '');
+	console.log(hex + ' : ' + this.value);
 	var dec = hex2dec(hex);
 	update(dec);
 };
