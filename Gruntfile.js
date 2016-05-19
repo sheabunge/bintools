@@ -55,10 +55,10 @@ module.exports = function(grunt) {
 						'js/lib/conv.js',
 						'js/hexconv.js'
 					],
-					'dist/float.js': [
+					'dist/floatconv.js': [
 						'js/lib/conv.js',
 						'js/lib/twoscomp.js',
-						'js/float.js'
+						'js/floatconv.js'
 					]
 				}
 			}
