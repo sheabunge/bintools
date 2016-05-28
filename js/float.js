@@ -46,6 +46,10 @@ App.prototype.pad = function (s, length, char) {
     return s;
 };
 
+App.prototype.get_exp_format = function () {
+  return document.querySelector('input[name=exp_format]:checked').value;
+};
+
 App.prototype.output_binary = function () {
     console.log(this.sign + ' ' + this.exp + ' ' + this.mantissa);
     this.el.bits.sign.innerHTML = '<span class="bit">' + this.sign + '</span>';
@@ -107,13 +111,24 @@ App.prototype.set_decimal = function (dec) {
 
     this.mantissa = mantissa;
 
-    // convert exponent to binary
-    if (exp < 0) {
-        exp = dec2bin(-exp);
-        this.exp = twoscomp(this.pad(exp, this.bits.exp));
+    var negative_exp = exp < 0;
+    exp = dec2bin(Math.abs(exp));
+
+    if (this.get_exp_format() == 'signed') {
+        // convert exponent to signed magnitude
+        exp = (negative_exp ? '1' : '0') + exp;
+        exp = this.pad(exp, this.bits.exp);
     } else {
-        this.exp = this.pad(dec2bin(exp), this.bits.exp);
+        // convert exponent to two's complement
+
+        if (negative_exp) {
+            exp = twoscomp(this.pad(exp, this.bits.exp));
+        } else {
+            exp = this.pad(exp, this.bits.exp);
+        }
     }
+
+    this.exp = exp;
 };
 
 App.prototype.set_binary = function (sign, exp, mantissa) {
@@ -130,7 +145,6 @@ var elements = {
     config: {
         sign_bit: document.getElementById('sign_bit'),
         exp_len: document.getElementById('exp_length'),
-        exp_format: document.getElementById('exp_format'),
         mantissa_len: document.getElementById('mantissa_length'),
         word_len: document.getElementById('word_length')
     }
