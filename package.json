@@ -1,5 +1,5 @@
 {
-  "name": "sheabunge/compsci",
+  "name": "compsci",
   "description": "Simple web-based conversion tools",
   "homepage": "http://sheabunge.github.io/compsci",
   "devDependencies": {
