@@ -7,11 +7,20 @@
  * @returns {string} The formatted number
  */
 var format_dec = function (dec) {
+	var mantissa = '';
+
 	// convert to string
 	dec += '';
 
 	// remove columns
 	dec = dec.replace(/\s/g, '');
+
+	// remove mantissa
+	if (dec.indexOf('.') !== -1) {
+		var parts = dec.split('.');
+		mantissa += '.' + parts[1];
+		dec = parts[0];
+	}
 
 	// remove leading zeros
 	dec = dec.replace(/^0+([1-9])/, '$1');
@@ -20,7 +29,9 @@ var format_dec = function (dec) {
 	var padding = 3 - dec.length % 3;
 	if (padding == 3) padding = 0;
 	dec = ' '.repeat(padding) + dec;
-	return dec.replace(/(\d{3}[^.])/g, '$1 ').trim();
+	dec = dec.replace(/(.{3})/g, '$1 ').trim();
+
+	return dec + mantissa;
 };
 
 /**
@@ -30,10 +41,19 @@ var format_dec = function (dec) {
  * @returns {string} The formatted binary number
  */
 var format_bin = function (bin, bits) {
+	var mantissa = '';
 	bin += '';
 
 	// remove columns
 	bin = bin.replace(/\s/g, '');
+
+	// remove mantissa
+	if (bin.indexOf('.') !== -1) {
+		var parts = bin.split('.');
+		console.log(parts);
+		mantissa = '.' + parts[1];
+		bin = parts[0];
+	}
 
 	// remove leading zeros
 	bin = bin.replace(/^0+([^0])/, '$1');
@@ -48,28 +68,7 @@ var format_bin = function (bin, bits) {
 	}
 
 	bin = '0'.repeat(padding) + bin;
-	return bin.replace(/(\d{4})/g, '$1 ').trim();
-};
+	bin = bin.replace(/(.{4})/g, '$1 ').trim();
 
-
-/**
- * Separate a number into columns using spaces
- * @param {string} num The original number
- * @param {number} col The amount of digits per column
- * @returns {string} The formatted number
- */
-var columnize = function (num, col) {
-	num = num + '';
-	var before = num.split('').reverse();
-	var after = [];
-
-	for (var i = 0; i < before.length; i++) {
-		after.push(before[i]);
-
-		if ((i+1) % col === 0) {
-			after.push(' ');
-		}
-	}
-
-	return after.reverse().join('').trim();
+	return bin + mantissa;
 };

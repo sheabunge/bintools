@@ -7,6 +7,20 @@
 var bin2dec = function (bin) {
 	var dec = 0;
 	bin = bin.replace(/\s/g, '');
+
+	// Convert the fractional part first
+	if (bin.indexOf('.') !== -1) {
+		var parts = bin.split('.');
+		var mant = parts[1];
+		bin = parts[0];
+
+		for (var j = 0; j < mant.length; ++j) {
+			if (mant[j] == '1') {
+				dec += 1/Math.pow(2, j+1);
+			}
+		}
+	}
+
 	bin = bin.split('').reverse().join('');
 
 	for (var i = bin.length - 1; i >= 0; --i) {
@@ -29,7 +43,21 @@ var dec2bin = function (dec) {
 	dec *= 1;
 
 	if (dec === 0) {
-		return 0;
+		return '0';
+	}
+
+	// Convert the fractional part first
+	if (Math.floor(dec) !== dec) {
+		var bin_mant = '.';
+		var mant = dec % 1;
+
+		for (var j = 0; mant !== 0; ++j) {
+			mant *= 2;
+			bin_mant += Math.floor(mant);
+			mant %= 1;
+		}
+
+		return dec2bin(Math.floor(dec)) + bin_mant;
 	}
 
 	// find biggest significant figure
@@ -57,10 +85,10 @@ var dec2bin = function (dec) {
 var dec2hex = function (dec) {
 	var alpha = '0123456789ABCDEF';
 	var hex = [];
-	dec *= 1;
+	dec = Math.floor(dec);
 
 	if (dec === 0) {
-		return 0;
+		return '0';
 	}
 
 	// find biggest significant figure
