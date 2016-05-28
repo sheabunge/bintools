@@ -32,9 +32,13 @@ module.exports = function(grunt) {
 					require('cssnano')()
 				]
 			},
-			dist: {
+			app: {
 				src: 'css/app.css',
 				dest: 'dist/app.css'
+			},
+			float: {
+				src: 'css/float.css',
+				dest: 'dist/float.css'
 			}
 		},
 
@@ -54,6 +58,11 @@ module.exports = function(grunt) {
 						'js/lib/format.js',
 						'js/lib/conv.js',
 						'js/hexconv.js'
+					],
+					'dist/float.js': [
+						'js/lib/conv.js',
+						'js/lib/twoscomp.js',
+						'js/float.js'
 					],
 					'dist/floatconv.js': [
 						'js/lib/conv.js',

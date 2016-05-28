@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Floating Point Binary Calculator</title>
+    <link rel="stylesheet" href="dist/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="dist/float.css">
+</head>
+<body>
+
+<h1>Floating Point Binary</h1>
+
+<main>
+
+    <form>
+        <p>
+            <label for="decimal">Decimal</label>
+            <input id="decimal">
+        </p>
+    </form>
+
+    <div class="output">
+        <div class="sign">
+            <p class="bits">
+                <span class="bit">0</span>
+            </p>
+            <p class="desc">Sign</p>
+        </div>
+
+        <div class="exp">
+            <p class="bits">
+                <span class="bit">0</span>
+                <span class="bit">0</span>
+                <span class="bit">0</span>
+            </p>
+            <p class="desc">Exponent</p>
+        </div>
+
+        <div class="mantissa">
+            <p class="bits">
+                <span class="bit">0</span>
+                <span class="bit">0</span>
+                <span class="bit">0</span>
+                <span class="bit">0</span>
+                <span class="bit">0</span>
+            </p>
+            <p class="desc">Mantissa</p>
+        </div>
+    </div>
+
+    <form class="config">
+        <p>
+            <label for="sign_bit">Sign Bit</label>
+            <input id="sign_bit" type="checkbox" checked>
+        </p>
+        <p>
+            <label for="exp_length">Exponent Length</label>
+            <input type="number" id="exp_length" value="3"> bits
+        </p>
+        <p>
+            <label>Exponent Format</label>
+            <label>
+                <input type="radio" name="exp_format" value="twos" checked>
+                Two's Complement
+            </label>
+            <label>
+                <input type="radio" name="exp_format" value="signed">
+                Signed Magnitude
+            </label>
+        </p>
+        <p>
+            <label for="mantissa_length">Mantissa Length</label>
+            <input type="number" id="mantissa_length" value="5"> bits
+        </p>
+        <p>
+            <label for="word_length">Word Length</label>
+            <input type="number" id="word_length" value="9"> bits
+        </p>
+    </form>
+
+</main>
+
+<p><a href="https://github.com/sheabunge/compsci">View source on GitHub</a></p>
+
+<script src="dist/float.js"></script>
+</body>
+</html>

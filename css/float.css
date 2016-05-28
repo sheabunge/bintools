@@ -1,0 +1,63 @@
+
+body {
+	font-family: Droid Sans, sans-serif;
+}
+
+.output {
+	display: flex;
+	text-align: center;
+	justify-content: space-between;
+	margin: 1em 0;
+}
+
+.sign, .exp, .mantissa {
+	display: flex;
+	flex-flow: column;
+}
+
+.bits {
+	display: flex;
+	justify-content: space-between;
+}
+
+.bits > * {
+	flex: 1;
+}
+
+.bit {
+	padding: 3px 6px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin: 0 2px;
+	font-size: 20px;
+	color: #666;
+}
+
+.desc {
+	margin: 10px auto;
+}
+
+.config {
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid #efefef;
+
+	p {
+		margin-top: 0;
+	}
+
+	[type=number] {
+		width: 3em;
+		padding-right: 0;
+		text-align: center;
+		margin-right: 5px;
+	}
+}
+
+input {
+	font-size: 15px;
+}
+
+#decimal {
+	width: 70%;
+}
