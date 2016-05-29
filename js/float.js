@@ -49,6 +49,7 @@ app.controller('Converter', ['$scope', function ( $scope ) {
         // convert to binary
         var exp = 0;
         var mantissa = dec2bin(dec);
+        $scope.initial_mantissa = mantissa;
 
         // normalise mantissa
         if (mantissa < 1) {
@@ -69,6 +70,7 @@ app.controller('Converter', ['$scope', function ( $scope ) {
             mantissa += '0'.repeat($scope.bits.mantissa - mantissa.length);
         }
         $scope.mantissa = mantissa;
+        $scope.exp_decimal = exp;
 
         var negative_exp = exp < 0;
         exp = dec2bin(Math.abs(exp));

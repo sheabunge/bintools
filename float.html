@@ -67,10 +67,16 @@
         </p>
         <p>
             <label for="word_length">Word Length</label>
-            <input type="number" ng-model="word_len" ng-model-options="{ getterSetter: true }" id="word_length"> bits
+            <input type="number" ng-model="word_len" ng-model-options="{getterSetter: true}" id="word_length"> bits
         </p>
     </form>
 
+    <section class="steps">
+        <p>{{ decimal }} &times; 2<sup>0</sup></p>
+        <p>{{ initial_mantissa }} &times; 2<sup>0</sup></p>
+        <p>0.{{ mantissa }} &times; 2<sup>{{ exp_decimal }}</sup></p>
+        <p>0.{{ mantissa }} &times; 2<sup>{{ exp }}</sup></p>
+    </section>
 </main>
 
 <p><a href="https://github.com/sheabunge/compsci">View source on GitHub</a></p>
