@@ -52,7 +52,9 @@ app.controller('Converter', ['$scope', function ( $scope ) {
         $scope.initial_mantissa = mantissa;
 
         // normalise mantissa
-        if (mantissa < 1) {
+        if (mantissa == '0') {
+
+        } else if (mantissa < 1) {
         	mantissa = mantissa.replace(/^0./, '');
         	for (var i = 0; mantissa[i] == '0'; ++i, --exp) {}
         	mantissa = mantissa.substr(i);
