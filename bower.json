@@ -17,6 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "v4-dev"
+    "bootstrap": "v4-dev",
+    "angular": "~1.5.6",
+    "angular-sanitize": "~1.5.6"
   }
 }
