@@ -90,11 +90,10 @@ app.controller('Converter', ['$scope', function ( $scope ) {
     convert_decimal(0);
 
     $scope.$watch(function () {
-        var dec = $scope.decimal + '';
+        var dec = $scope.decimal;
+        dec = parseFloat(dec);
 
-        if (dec.match(/-?\d+/)) {
-            dec *= 1;
-        } else {
+        if (isNaN(dec)) {
             console.log(dec + ' is not a valid number');
             dec = 0;
         }
