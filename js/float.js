@@ -31,9 +31,14 @@ app.controller('Converter', ['$scope', function ( $scope ) {
     $scope.decimal = 0;
     $scope.exp_format = 'twos';
 
-    // $scope.wordlen = function (value) {
-    //   console.log(value);
-    // };
+    $scope.word_len = function (length) {
+        if (arguments.length) {
+            $scope.bits.mantissa += length - $scope.word_len();
+            return length;
+        }
+
+        return ($scope.bits.sign ? 1 : 0) + $scope.bits.exp + $scope.bits.mantissa;
+    };
 
     var convert_decimal = function (dec) {
 
