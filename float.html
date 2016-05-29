@@ -48,7 +48,7 @@
         </p>
         <p>
             <label for="exp_length">Exponent Length</label>
-            <input type="number" ng-model="bits.exp" id="exp_length"> bits
+            <input type="number" ng-model="bits.exp" min="0" id="exp_length"> bits
         </p>
         <p>
             <label>Exponent Format</label>
@@ -63,11 +63,11 @@
         </p>
         <p>
             <label for="mantissa_length">Mantissa Length</label>
-            <input type="number" ng-model="bits.mantissa" id="mantissa_length"> bits
+            <input type="number" min="0" ng-model="bits.mantissa" id="mantissa_length"> bits
         </p>
         <p>
             <label for="word_length">Word Length</label>
-            <input type="number" ng-model="word_len" ng-model-options="{getterSetter: true}" id="word_length"> bits
+            <input type="number" min="0" ng-model="word_len" ng-model-options="{getterSetter: true}" id="word_length"> bits
         </p>
     </form>
 
