@@ -1,5 +1,5 @@
 
-var pad = function (s, length, char) {
+var pad = function (s, length, char, append) {
     s += '';
     char = char || '0';
 
@@ -8,7 +8,7 @@ var pad = function (s, length, char) {
     }
 
     while (s.length < length) {
-        s = char + s;
+        s = append ? s + char : char + s;
     }
 
     return s;
@@ -64,11 +64,7 @@ app.controller('Converter', ['$scope', function ( $scope ) {
         }
 
         // convert to required size
-        if (mantissa.length > $scope.bits.mantissa) {
-        	mantissa = mantissa.substr(0, $scope.bits.mantissa);
-        } else if (mantissa.length < $scope.bits.mantissa) {
-            mantissa += '0'.repeat($scope.bits.mantissa - mantissa.length);
-        }
+        mantissa = pad(mantissa, $scope.bits.mantissa, '0', true);
         $scope.mantissa = mantissa;
         $scope.exp_decimal = exp;
 
@@ -80,7 +76,7 @@ app.controller('Converter', ['$scope', function ( $scope ) {
         	exp = (negative_exp ? '1' : '0') + exp;
         }
 
-        exp = pad(exp, $scope.bits.exp);
+        exp = pad(exp, $scope.bits.exp, '0');
 
         // convert exponent to two's complement
         if (negative_exp && $scope.exp_format == 'twos') {
