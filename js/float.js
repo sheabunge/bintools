@@ -49,7 +49,9 @@ app.controller('Converter', ['$scope', function ( $scope ) {
         // convert to binary
         var exp = 0;
         var mantissa = dec2bin(dec);
-        $scope.initial_mantissa = mantissa;
+        $scope.initial_mantissa = pad(mantissa,
+            $scope.bits.mantissa + ( mantissa.indexOf('.') === -1 ? 0 : 1 )
+        );
 
         // normalise mantissa
         if (mantissa == '0') {
