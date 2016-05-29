@@ -1,4 +1,11 @@
-
+/**
+ * Pad a string so it is a fixed length
+ * @param {String} s - The string to pad
+ * @param {Number} length - The desired length
+ * @param {String} [char=0] - The character used for padding
+ * @param {Boolean} [append=false] - Whether to prepend or append padding
+ * @returns {String} The string at the desired length
+ */
 var pad = function (s, length, char, append) {
     s += '';
     char = char || '0';
@@ -14,8 +21,15 @@ var pad = function (s, length, char, append) {
     return s;
 };
 
+/**
+ * The main app module
+ * @type {angular.Module}
+ */
 var app = angular.module('FloatConverter', ['ngSanitize']);
 
+/**
+ * Angular filter to format a string of bits as blocks
+ */
 app.filter('format_bits', function () {
     return function (input) {
         var output = '';
@@ -26,6 +40,9 @@ app.filter('format_bits', function () {
     };
 });
 
+/**
+ * The main controller
+ */
 app.controller('Converter', ['$scope', function ( $scope ) {
     $scope.bits = { sign: true, exp: 3, mantissa: 5 };
     $scope.decimal = 0;
@@ -40,6 +57,10 @@ app.controller('Converter', ['$scope', function ( $scope ) {
         return ($scope.bits.sign ? 1 : 0) + $scope.bits.exp + $scope.bits.mantissa;
     };
 
+    /**
+     * Converts a decimal to floating point binary
+     * @param dec
+     */
     var convert_decimal = function (dec) {
 
         // calculate sign
