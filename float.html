@@ -76,6 +76,7 @@
         <p>{{ initial_mantissa }} &times; 2<sup>0</sup></p>
         <p>0.{{ mantissa }} &times; 2<sup>{{ exp_decimal }}</sup></p>
         <p>0.{{ mantissa }} &times; 2<sup>{{ exp }}</sup></p>
+        <p>{{ bits.sign ? sign : '' }} {{ exp }} {{ mantissa }}</p>
     </section>
 </main>
 
