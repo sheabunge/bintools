@@ -58,9 +58,9 @@ input {
 	font-size: 15px;
 }
 
-#decimal {
+.input input {
 	width: 75%;
-	text-align: right;
+	text-align: center;
 }
 
 .steps {
