@@ -1,3 +1,4 @@
+
 /**
  * Pad a string so it is a fixed length
  * @param {String} s - The string to pad
@@ -25,7 +26,7 @@ var pad = function (s, length, char, append) {
  * The main app module
  * @type {angular.Module}
  */
-var app = angular.module('FloatConverter', ['ngSanitize']);
+var app = angular.module('app', ['ngSanitize']);
 
 /**
  * Angular filter to format a string of bits as blocks
@@ -43,7 +44,7 @@ app.filter('format_bits', function () {
 /**
  * The main controller
  */
-app.controller('Converter', ['$scope', function ( $scope ) {
+app.controller('FloatConverter', ['$scope', function ( $scope ) {
     $scope.bits = { sign: true, exp: 3, mantissa: 5 };
     $scope.decimal = 0;
     $scope.exp_format = 'twos';
