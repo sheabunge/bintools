@@ -35,7 +35,7 @@ app.filter('format_bits', function () {
     return function (input) {
         var output = '';
         for (var i = 0; i < input.length; ++i) {
-            output += '<span class="bit">' + input[i] + '</span>\n';
+            output += '<span class="bit">' + input[i] + '</span>';
         }
         return output;
     };
@@ -52,6 +52,12 @@ app.controller('FloatConverter', ['$scope', function ( $scope ) {
     $scope.word_len = function (length) {
         if (arguments.length) {
             $scope.bits.mantissa += length - $scope.word_len();
+
+            if ($scope.bits.mantissa < 1) {
+                $scope.bits.exp += $scope.bits.mantissa;
+                $scope.bits.mantissa = 1;
+            }
+
             return length;
         }
 
@@ -71,7 +77,7 @@ app.controller('FloatConverter', ['$scope', function ( $scope ) {
         // convert to binary
         var exp = 0;
         var mantissa = dec2bin(dec);
-        $scope.initial_mantissa = $scope.bits.mantissa;
+        $scope.initial_mantissa = $scope.mantissa;
 
         // normalise mantissa
         if (mantissa == '0') {
