@@ -60,6 +60,8 @@ module.exports = function(grunt) {
 						'js/hexconv.js'
 					],
 					'dist/float.js': [
+						'bower_components/angular/angular.js',
+						'bower_components/angular-sanitize/angular-sanitize.js',
 						'js/lib/conv.js',
 						'js/lib/twoscomp.js',
 						'js/float.js'
@@ -68,10 +70,6 @@ module.exports = function(grunt) {
 						'js/lib/conv.js',
 						'js/lib/twoscomp.js',
 						'js/floatconv.js'
-					],
-					'dist/angular.js': [
-						'bower_components/angular/angular.js',
-						'bower_components/angular-sanitize/angular-sanitize.js'
 					]
 				}
 			}

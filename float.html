@@ -5,7 +5,6 @@
     <title>Floating Point Binary Calculator</title>
     <link rel="stylesheet" href="dist/app.css">
     <link rel="stylesheet" href="dist/float.css">
-    <script src="dist/angular.js"></script>
     <script src="dist/float.js"></script>
 </head>
 <body ng-app="app">
@@ -21,8 +20,7 @@
         </p>
     </form>
 
-    <div class="output">
-
+    <section class="output">
         <div class="sign" ng-if="bits.sign">
             <p class="bits" ng-bind-html="sign | format_bits"></p>
             <p class="desc">Sign</p>
@@ -33,11 +31,11 @@
             <p class="desc">Exponent</p>
         </div>
 
-        <div class="mantissa" ng-if="bits.mantissa > 0">
+        <div class="mantissa">
             <p class="bits" ng-bind-html="mantissa | format_bits"></p>
             <p class="desc">Mantissa</p>
         </div>
-    </div>
+    </section>
 
     <form class="config">
         <p>
@@ -61,11 +59,11 @@
         </p>
         <p>
             <label for="mantissa_length">Mantissa Length</label>
-            <input type="number" min="0" ng-model="bits.mantissa" id="mantissa_length"> bits
+            <input type="number" min="1" ng-model="bits.mantissa" id="mantissa_length"> bits
         </p>
         <p>
             <label for="word_length">Word Length</label>
-            <input type="number" min="0" ng-model="word_len" ng-model-options="{getterSetter: true}" id="word_length"> bits
+            <input type="number" min="1" ng-model="word_len" ng-model-options="{getterSetter: true}" id="word_length"> bits
         </p>
     </form>
 
@@ -79,5 +77,6 @@
 </main>
 
 <p><a href="https://github.com/sheabunge/compsci">View source on GitHub</a></p>
+
 </body>
 </html>
