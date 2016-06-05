@@ -36,9 +36,10 @@ var bin2dec = function (bin) {
 /**
  * Convert a decimal number into its binary equivalent
  * @param {number} dec The number in base 2
+ * @param {number} [mant_limit] The maximum number of bits to use in the mantissa
  * @returns {string} The number in base 10
  */
-var dec2bin = function (dec) {
+var dec2bin = function (dec, mant_limit) {
 	var bin = [];
 	dec *= 1;
 
@@ -51,7 +52,7 @@ var dec2bin = function (dec) {
 		var bin_mant = '.';
 		var mant = dec % 1;
 
-		for (var j = 0; mant !== 0; ++j) {
+		for (var j = 0; mant !== 0 && (!mant_limit || j < mant_limit); ++j) {
 			mant *= 2;
 			bin_mant += Math.floor(mant);
 			mant %= 1;
