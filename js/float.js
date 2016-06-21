@@ -76,7 +76,7 @@ app.controller('FloatConverter', ['$scope', function ( $scope ) {
 
         // convert to binary
         var exp = 0;
-        var mantissa = dec2bin(dec, 10);
+        var mantissa = dec2bin(dec, $scope.bits.mantissa);
         $scope.initial_mantissa = mantissa;
 
         // normalise mantissa
