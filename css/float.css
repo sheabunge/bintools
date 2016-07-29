@@ -82,6 +82,16 @@ input {
 		&:first-of-type::before {
 			visibility: hidden;
 		}
+
+		&:last-child {
+			&::before {
+				content: '';
+				padding-right: 0;
+			}
+
+			float: right;
+			position: relative;
+		}
 	}
 
 	sup {

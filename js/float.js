@@ -64,6 +64,30 @@ app.controller('FloatConverter', ['$scope', function ( $scope ) {
         return ($scope.bits.sign ? 1 : 0) + $scope.bits.exp + $scope.bits.mantissa;
     };
 
+    var float2dec = function (sign, exp, mantissa) {
+        console.log(sign + ' ' + exp + ' ' + mantissa);
+
+        // Convert exponent to two's complement decimal
+        if (exp[0] === '1') {
+            exp = bin2dec(twoscomp(exp)) * -1;
+        } else {
+            exp = bin2dec(exp);
+        }
+
+        // Convert mantissa to decimal
+        mantissa /= Math.pow(10, mantissa.length);
+        mantissa = bin2dec(mantissa + '');
+
+        // Calculate decimal number
+        var dec = mantissa * Math.pow(2, exp*1);
+
+        if (sign === '1') {
+            dec *= -1;
+        }
+
+        return dec;
+    };
+
     /**
      * Converts a decimal to floating point binary
      * @param dec
@@ -113,6 +137,10 @@ app.controller('FloatConverter', ['$scope', function ( $scope ) {
         	exp = twoscomp(exp);
         }
         $scope.exp = exp;
+
+        // convert the result back to decimal
+        $scope.converted_result = float2dec($scope.sign, $scope.exp, $scope.mantissa);
+
     };
 
     convert_decimal(0);
