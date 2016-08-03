@@ -1,4 +1,5 @@
 
+
 body {
 	font-family: Droid Sans, sans-serif;
 }
@@ -39,7 +40,7 @@ body {
 
 .config {
 	margin-top: 1em;
-	padding-top: 1em;
+	padding: 1em 0;
 	border-top: 1px solid #efefef;
 	border-bottom: 1px solid #efefef;
 
@@ -64,37 +65,62 @@ input {
 }
 
 .steps {
-	background-color: #efefef;
-	border: 1px solid #bbb;
-	border-radius: 5px;
-	padding: 1em 1.5em;
-	margin: 1em 10%;
+	display: flex;
+
+	section {
+		width: 50%;
+		padding: 1em 1.5em;
+	}
+
+	h3 {
+		text-align: center;
+		display: block;
+		font-size: 1rem;
+		margin-bottom: 1em;
+	}
 
 	p {
 		padding: 0;
-		margin: 0;
+		margin: 5px 0;
+	}
 
-		&::before {
-			content: '= ';
-			padding-right: 2px;
-		}
+	.validation {
+		float: right;
+	}
 
-		&:first-of-type::before {
-			visibility: hidden;
-		}
+	.calculation {
+		border-right: 1px solid #efefef;
 
-		&:last-child {
+		p {
 			&::before {
-				content: '';
-				padding-right: 0;
+				content: '= ';
+				padding-right: 2px;
 			}
 
-			float: right;
-			position: relative;
+			&:first-of-type::before {
+				visibility: hidden;
+			}
 		}
+	}
+
+	table {
+		white-space: nowrap;
+	}
+
+	th {
+		text-align: left;
+	}
+
+	td::before {
+		content: '=';
+		padding-right: 5px;
 	}
 
 	sup {
 		margin-left: 1px;
+	}
+
+	sub {
+		font-size: 7px;
 	}
 }

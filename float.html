@@ -67,14 +67,52 @@
         </p>
     </form>
 
-    <section class="steps">
-        <p>{{ decimal }} &times; 2<sup>0</sup></p>
-        <p>{{ initial_mantissa }} &times; 2<sup>0</sup></p>
-        <p>0.{{ mantissa }} &times; 2<sup>{{ exp_decimal }}</sup></p>
-        <p>0.{{ mantissa }} &times; 2<sup>{{ exp }}</sup></p>
-        <p>{{ bits.sign ? sign : '' }} {{ exp }} {{ mantissa }}</p>
-        <p>{{ converted_result }}</p>
-    </section>
+		<div class="steps">
+			<section class="calculation">
+				<h3>Calculation</h3>
+
+				<p>{{ decimal }} &times; 2<sup>0</sup></p>
+				<p>{{ initial_mantissa }} &times; 2<sup>0</sup></p>
+				<p>0.{{ mantissa }} &times; 2<sup>{{ exp_decimal }}</sup></p>
+				<p>0.{{ mantissa }} &times; 2<sup>{{ exp }}</sup></p>
+				<p>{{ bits.sign ? sign : '' }} {{ exp }} {{ mantissa }}</p>
+			</section>
+
+			<section class="validation">
+				<h3>Validation</h3>
+
+				<table>
+					<tr>
+						<th>sign</th>
+						<td>{{ sign == '1' ? '-' : '+' }}</td>
+					</tr>
+					<tr>
+						<th>exponent</th>
+						<td>{{ exp }}<sub>2</sub></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>{{ exp_decimal }}<sub>10</sub></td>
+					</tr>
+					<tr>
+						<th>mantissa</th>
+						<td>0.{{ mantissa }}<sub>2</sub></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>{{ mantissa_decimal }}<sub>10</sub></td>
+					</tr>
+					<tr>
+						<th>decimal</th>
+						<td>{{ mantissa_decimal }} &times; 2<sup>{{ exp_decimal }}</sup></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>{{ converted_result }}</td>
+					</tr>
+				</table>
+			</section>
+		</div>
 </main>
 
 <p><a href="https://github.com/sheabunge/compsci">View source on GitHub</a></p>

@@ -120,6 +120,7 @@ app.controller('FloatConverter', ['$scope', function ( $scope ) {
         // convert to required size
         mantissa = pad(mantissa, $scope.bits.mantissa, '0', true);
         $scope.mantissa = mantissa;
+        $scope.mantissa_decimal = bin2dec('0.' + mantissa);
         $scope.exp_decimal = exp;
 
         var negative_exp = exp < 0;
