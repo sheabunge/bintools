@@ -43,7 +43,7 @@ var dec2bin = function (dec, mant_limit) {
 	var bin = [];
 	dec *= 1;
 
-	if (dec === 0) {
+	if (isNaN(dec) || dec === 0) {
 		return '0';
 	}
 

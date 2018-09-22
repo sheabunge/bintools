@@ -29,18 +29,21 @@ comp_bin.oninput = function () {
 
 orig_dec.oninput = function () {
 	var decimal = this.value * 1;
+	if (isNaN(decimal)) return;
+
 	var binary = format_bin(dec2bin(decimal));
 	var comp = twoscomp(binary);
 
 	orig_bin.value = binary;
 	comp_bin.value = comp;
-
 	comp_dec.value = decimal * -1;
 };
 
 
 comp_dec.oninput = function () {
 	var decimal = this.value * -1;
+	if (isNaN(decimal)) return;
+
 	var binary = format_bin(dec2bin(decimal));
 	var comp = twoscomp(binary);
 
