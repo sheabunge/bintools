@@ -1,10 +1,10 @@
 {
-  "name": "compsci",
+  "name": "bintools",
   "description": "Simple web-based conversion tools",
-  "homepage": "http://sheabunge.github.io/compsci",
+  "homepage": "http://sheabunge.github.io/bintools",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sheabunge/compsci.git"
+    "url": "https://github.com/sheabunge/bintools.git"
   },
   "author": "Shea Bunge <shea@bungeshea.com>",
   "license": "MIT",
