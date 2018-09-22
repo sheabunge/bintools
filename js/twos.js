@@ -1,53 +1,57 @@
-var orig_bin = document.getElementById('orig_binary');
-var orig_dec = document.getElementById('orig_decimal');
-var comp_bin = document.getElementById('comp_binary');
-var comp_dec = document.getElementById('comp_decimal');
+import {format_bin} from './lib/format';
+import {bin2dec, dec2bin} from './lib/conv';
+import {twoscomp} from './lib/twoscomp';
 
-orig_bin.oninput = function () {
-	var binary = format_bin(this.value);
-	var decimal = bin2dec(binary);
-	var comp = twoscomp(binary);
+const orig_bin = document.getElementById('orig_binary');
+const orig_dec = document.getElementById('orig_decimal');
+const comp_bin = document.getElementById('comp_binary');
+const comp_dec = document.getElementById('comp_decimal');
 
-	orig_bin.value = binary;
-	comp_bin.value = comp;
-
-	orig_dec.value = decimal;
-	comp_dec.value = decimal * -1;
-};
-
-comp_bin.oninput = function () {
-	var comp = format_bin(this.value);
-	var binary = twoscomp(comp);
-	var decimal = bin2dec(binary);
+orig_bin.addEventListener('input', function () {
+	let binary = format_bin(this.value);
+	let decimal = bin2dec(binary);
+	let comp = twoscomp(binary);
 
 	orig_bin.value = binary;
 	comp_bin.value = comp;
 
 	orig_dec.value = decimal;
 	comp_dec.value = decimal * -1;
-};
+});
 
-orig_dec.oninput = function () {
-	var decimal = this.value * 1;
+comp_bin.addEventListener('input', function () {
+	let comp = format_bin(this.value);
+	let binary = twoscomp(comp);
+	let decimal = bin2dec(binary);
+
+	orig_bin.value = binary;
+	comp_bin.value = comp;
+
+	orig_dec.value = decimal;
+	comp_dec.value = decimal * -1;
+});
+
+orig_dec.addEventListener('input', function () {
+	let decimal = this.value * 1;
 	if (isNaN(decimal)) return;
 
-	var binary = format_bin(dec2bin(decimal));
-	var comp = twoscomp(binary);
+	let binary = format_bin(dec2bin(decimal));
+	let comp = twoscomp(binary);
 
 	orig_bin.value = binary;
 	comp_bin.value = comp;
 	comp_dec.value = decimal * -1;
-};
+});
 
 
-comp_dec.oninput = function () {
-	var decimal = this.value * -1;
+comp_dec.addEventListener('input', function () {
+	let decimal = this.value * -1;
 	if (isNaN(decimal)) return;
 
-	var binary = format_bin(dec2bin(decimal));
-	var comp = twoscomp(binary);
+	let binary = format_bin(dec2bin(decimal));
+	let comp = twoscomp(binary);
 
 	orig_bin.value = binary;
 	comp_bin.value = comp;
 	orig_dec.value = decimal;
-};
+});

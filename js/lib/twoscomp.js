@@ -3,14 +3,14 @@
  * @param {string} bin The original decimal number
  * @returns {string} The two's complement
  */
-var twoscomp = function (bin) {
-	var orig = bin.split('').reverse();
-	var comp = [];
-	var bits = orig.length;
+export const twoscomp = (bin) => {
+	const orig = bin.split('').reverse();
+	const bits = orig.length;
+	let comp = [];
 
-	var i = 0;
+	let i = 0;
 
-	while (i < bits && orig[i] != '1') {
+	while (i < bits && orig[i] !== '1') {
 		comp[i] = orig[i];
 		++i;
 	}
@@ -23,9 +23,9 @@ var twoscomp = function (bin) {
 	++i;
 
 	while (i < bits) {
-		if (orig[i] == '1') {
+		if (orig[i] === '1') {
 			comp[i] = '0';
-		} else if (orig[i] == '0') {
+		} else if (orig[i] === '0') {
 			comp[i] = '1';
 		} else {
 			comp[i] = orig[i];
