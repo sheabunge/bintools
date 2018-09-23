@@ -1,7 +1,4 @@
-import angular from '../bower_components/angular/angular';
-import ngsanitize from '../bower_components/angular-sanitize/angular-sanitize';
-import {bin2dec} from './lib/conv.js';
-import {dec2bin} from './lib/conv';
+import {bin2dec, dec2bin} from './lib/conv';
 import {twoscomp} from './lib/twoscomp';
 
 /**
@@ -31,7 +28,7 @@ const pad = function (s, length, char, append) {
  * The main app module
  * @type {angular.Module}
  */
-const app = angular.module('app', [ngsanitize]);
+const app = angular.module('app', ['ngSanitize']);
 
 /**
  * Angular filter to format a string of bits as blocks

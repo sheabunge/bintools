@@ -3,6 +3,8 @@
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import clean from 'gulp-clean';
+import concat from 'gulp-concat';
+import merge from 'merge-stream';
 
 import postcss from 'gulp-postcss';
 import precss from 'precss';
@@ -15,7 +17,6 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import uglify from 'gulp-uglify';
 import eslint from 'gulp-eslint';
-import merge from 'merge-stream';
 
 let browsersync = require('browser-sync').create();
 
@@ -73,16 +74,21 @@ gulp.task('js', gulp.series('test-js', () => {
 	let tasks = files.map((entry) => {
 		entry += '.js';
 		return browserify({entries: 'js/' + entry, debug: true})
-			.transform('babelify', babel_options)
+			.transform(babelify, babel_options)
 			.bundle()
 			.pipe(source(entry))
 			.pipe(buffer())
 			.pipe(sourcemaps.init())
-			// .pipe(uglify())
+			.pipe(uglify())
 			.pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest(dest))
 			.pipe(browsersync.stream({match: '**/*.js'}));
 	});
+
+	tasks.push(gulp.src(['node_modules/angular/angular.js','node_modules/angular-sanitize/angular-sanitize.js'])
+		.pipe(concat('angular.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest(dest)));
 
 	return merge(tasks);
 }));
@@ -92,14 +98,9 @@ gulp.task('clean', () => {
 		.pipe(clean());
 });
 
-gulp.task('vendor', () => {
-	return gulp.src('node_modules/bootstrap/dist/css/bootstrap.min.css*')
-		.pipe(gulp.dest(dest));
-});
-
 gulp.task('test', gulp.parallel('test-js'));
 
-gulp.task('default', gulp.series('clean', gulp.parallel('vendor', 'css', 'js')));
+gulp.task('default', gulp.series('clean', gulp.parallel('css', 'js')));
 
 gulp.task('watch', gulp.series('default', (done) => {
 	gulp.watch('css/**/*.css', gulp.series('css'));
